@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment1</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+  <script>
+	  var myApp = angular.module("myModule",[]);
+	   myApp.controller('myController', function($scope){
+	  	$scope.people=[{firstName:'',lastName:''}];
+	  	$scope.showRow=function(){
+	  		var person={
+	  			firstName:$scope.firstName,
+	  			lastName:$scope.lastName
+	  		};
+	  		$scope.people.push(person);
+	  	}
+	  });
+	</script>
+</head>
+
+<body ng-app="myModule" >
+  <div ng-controller="myController" >
+  	  <label>First name: <input type="text" ng-model="firstName" placeholder="first name"/></label><br />
+	  <label>Last name:<input type="text" ng-model="lastName" placeholder="last name" /></label>
+	  <button ng-click="showRow()">Submit</button>
+	  <br>
+	  <br>
+	  <table border="1">
+	  	<tr>
+	  		<th>
+	  			First Name
+	  		</th>
+	  		<th>
+	  			Last Name
+	  		</th>
+	  	</tr>
+	  	<tr ng-repeat="person in people">
+	  		<td>
+	  			{{ person.firstName }}
+	  		</td>
+	  		<td>
+	  			{{ person.lastName }}
+	  		</td>
+
+	  	</tr>
+	   
+	  </table>
+  </div>
+</body>
+</html>
